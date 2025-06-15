@@ -2,6 +2,7 @@ package godo
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 )
 
@@ -29,6 +30,21 @@ func (l *List) Complete(index int) error {
 	}
 	l.Godos[index].Done = true
 	return nil
+}
+
+func (l *List) String() string {
+	if len(l.Godos) == 0 {
+		return "No godos in list"
+	}
+	result := "Godo list:\n"
+	for i, godo := range l.Godos {
+		status := " "
+		if godo.Done {
+			status = "✓"
+		}
+		result += fmt.Sprintf("%d. [%s] %s\n", i+1, status, godo.Text)
+	}
+	return result
 }
 
 type Godo struct {
