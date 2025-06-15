@@ -1,4 +1,4 @@
-package godo
+package list
 
 import (
 	"os"
@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestGodoOperations(t *testing.T) {
+func TestListOperations(t *testing.T) {
 	tests := []struct {
 		name   string
 		testFn func(*testing.T, *List)
@@ -102,7 +102,7 @@ func setUpTestDB(t *testing.T) (*List, func()) {
 		t.Fatal(err)
 	}
 	f.Close()
-	list, err := NewList(f.Name())
+	list, err := New(f.Name())
 	if err != nil {
 		os.Remove(f.Name())
 		t.Fatal(err)

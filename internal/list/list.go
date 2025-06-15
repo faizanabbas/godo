@@ -1,4 +1,4 @@
-package godo
+package list
 
 import (
 	"context"
@@ -19,7 +19,7 @@ type List struct {
 	db      *sql.DB
 }
 
-func NewList(dbPath string) (*List, error) {
+func New(dbPath string) (*List, error) {
 	sqlite, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
 		return nil, fmt.Errorf("error opening database: %w", err)

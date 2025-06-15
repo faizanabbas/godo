@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/faizanabbas/godo/internal/godo"
+	"github.com/faizanabbas/godo/internal/list"
 )
 
 func main() {
-	list, err := godo.NewList("godo.db")
+	list, err := list.New("godo.db")
 	if err != nil {
 		log.Fatal(err)
 	}
