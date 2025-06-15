@@ -23,6 +23,14 @@ func (l *List) Add(text string) error {
 	return nil
 }
 
+func (l *List) Complete(index int) error {
+	if index < 0 || index >= len(l.Godos) {
+		return errors.New("godo does not exist")
+	}
+	l.Godos[index].Done = true
+	return nil
+}
+
 type Godo struct {
 	Text string
 	Done bool

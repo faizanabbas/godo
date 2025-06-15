@@ -24,6 +24,32 @@ func TestAddGodo(t *testing.T) {
 	})
 }
 
+func TestCompleteGodo(t *testing.T) {
+	t.Run("should complete existing godo", func(t *testing.T) {
+		list := NewList()
+		list.Add("Buy milk")
+		err := list.Complete(0)
+		if err != nil {
+			t.Errorf("unexpected error: %v", err)
+		}
+		if !list.Godos[0].Done {
+			t.Error("expected item to be marked as done")
+		}
+	})
+	t.Run("should reject completing non-existent godo", func(t *testing.T) {
+		list := NewList()
+		list.Add("Buy milk")
+		err := list.Complete(-1)
+		if err == nil {
+			t.Errorf("expected error when completing non-existent godo")
+		}
+		err = list.Complete(1)
+		if err == nil {
+			t.Errorf("expected error when completing non-existent godo")
+		}
+	})
+}
+
 func assertGodoEquals(t *testing.T, godo Godo, wantText string, wantDone bool) {
 	t.Helper()
 	if godo.Text != wantText {
