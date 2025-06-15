@@ -1,0 +1,10 @@
+-- +migrate Up
+CREATE TABLE godos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    text TEXT NOT NULL,
+    done BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- +migrate Down
+DROP TABLE godos;

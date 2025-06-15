@@ -1,0 +1,9 @@
+development:
+  dialect: sqlite3
+  datasource: godo.db
+  dir: db/migrations
+
+test:
+  dialect: sqlite3
+  datasource: ":memory:"
+  dir: db/migrations

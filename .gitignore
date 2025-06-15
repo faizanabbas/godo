@@ -1,6 +1,9 @@
 # OS files
 .DS_Store
 
+# SQLite
+*.db
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
